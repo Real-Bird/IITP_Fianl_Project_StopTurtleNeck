@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      
+        <title>STOP TURTLENECK</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'single_pages/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'single_pages/assets/css/style.css'%}" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/fb58eed872.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+ 
+
+    {% include 'blog/navbar.html' %}
+
+
+ <!-- ======= Hero Section ======= -->
+ <section id="hero" class="d-flex align-items-center">
+
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="500" >
+      <h1 style="padding-left: 100px;">STOP TURTLENECK</h1>
+      <a style="padding-left: 100px; color: aliceblue;">stop turtleneck은 글로벌 헬스케어 시장 흐름에 맞춰 <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        AI를 활용한 디지털 헬스케어 서비스를 제공합니다.</a>
+        <br>
+        <br>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#about" class="btn-get-started"  onclick="init()">거북목 진단하기</a>
+    </div>
+
+    <!-- start notice-->
+   
+    <div class="col-lg-5 mt-5" data-aos="fade-up" data-aos-delay="500" >
+      <h2 class="text-light">New Notice</h2>
+       {% for notice in recent_notices %}
+      <div class="card mt-1">
+          <div class="card-body" style="background-color: rgb(52, 52, 53);">
+              <h6><a href="{{notice.get_absolute_url}}" style="color: aliceblue;">
+                  {{notice.title}}
+              </a></h6>
+              <span class="badge badge-pill badge-light float-right">
+                  <img class="mr-1 rounded-circle" width="20px" src="{{notice.get_avatar_url}}" alt="{{post.author}}">
+                  <a style="color: black;">
+                  {{notice.author.username}}
+                  &nbsp;
+                  &nbsp;
+                  {{notice.created_at}}
+                </a>
+              </span>
+          </div>
+      </div>
+ 
+      {% endfor%}
+     
+      </div> 
+      <!--end notice -->
+
+  </section>
+  
+  <!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+  
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <a id="stop" type="button" class="border border-danger rounded-lg" style="display: none;"><strong>중단하기</strong></a>
+            <!-- <button id="restart" type="button" class="border border-warning rounded-lg" style="display: none;">재개하기</button> -->
+            <video id="videoInput" style="display: none;"></video>
+                  <div>
+                    <canvas id="videoOutput"></canvas>
+                  </div>
+                  <img id="guideLine" src="https://raw.githubusercontent.com/Real-Bird/pb/master/guideline2.png" style="display: none;"/>
+    
+                  <div style="float: left;">
+                      <span id="label-container" style="display: none;" class="border border-danger rounded-lg"><strong><b>pose</b></strong></span>
+                      <span id="counter" style="display: none;" class="border border-danger rounded-lg"><strong>거북목 <b>0</b> 회</strong></span> 
+                      
+                  </div>
+                  
+          </div>
+          
+          <div id="scroll" class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <h3>당신의 목 상태는 괜찮으신가요?</h3>
+            <br>
+            <p class="fst-italic">
+              stop turtleneck 프로그램은 desktop과 notebook의 사용자들에게 앉아있는 자세가 거북목 
+               자세인지 판별해 주는 서비스를 제공하고 있습니다.
+            </p>
+            <br>
+            <ul>
+              <li><i class="bi bi-check-circle"></i>웹캠의 카메라 접근 권한을 허용해주십시오</li>
+              <li><i class="bi bi-check-circle"></i> 알림음을 위한 음성 접근 권한을 허용해주십시오</li>
+              <li><i class="bi bi-check-circle"></i> 웹캠이 시작될 때까지 대기하신 후, 가이드라인에 맞춰 바른 자세로 앉아주십시오</li>
+            </ul>
+            
+            <p>
+              <li>
+              stop turtleneck은 AI 모델을 이용하여 고객님의 목 상태를 측정합니다.
+            </li>
+              <br>
+              <li>
+              10초 간격으로 자세를 측정한 후, 포인트 차감 형식으로 리워드를 제공합니다.
+              </li>
+              <br>
+              <li>
+              제공된 리워드 포인트는 오른쪽 상단의 my page에서 확인하실 수 있습니다.
+              </li>
+            </p>
+                  
+              </div>
+              <style>
+                canvas{         
+                    margin: 30px 0;
+                    transform: rotateY(180deg);         
+                    -webkit-transform:rotateY(180deg); /* Safari and Chrome */         
+                    -moz-transform:rotateY(180deg); /* Firefox */     
+                }
+                #webcam-container {
+                    margin-left: 300px;
+                    /* width: 400px;
+                    height: 400px;
+                    border: 10px #333 solid; */
+                }
+                #label-container{
+                    margin-left: 200px; 
+                    font-weight: 100;
+                    padding: 10px 10px;
+                    color: white;
+                    background-color: #cc1616;
+                    font-size: medium;
+                    /* width: 400px;
+                    height: 400px;
+                    background-color: #666; */
+                }
+                #counter{
+                    margin-left: 100px;
+                    font-weight: 100;
+                    padding: 10px 10px;
+                    color: white;
+                    background-color: #cc1616;
+                    font-size: medium;
+                }
+                #stop{
+                    margin-left: 280px;
+                    font-weight: 100;
+                    padding: 10px 10px;
+                    color: white;
+                    background-color: #cc1616;
+                    font-size: medium;
+                }
+                /* #restart{
+                    margin-left: 280px;
+                    font-weight: 100;
+                    padding: 10px 10px;
+                    color: goldenrod;
+                    font-size: medium;
+                } */
+            </style>
+        
+                
+    
+                </div>
+          </div>
+         
+        </div>
+
+     
+
+
+      </div>
+    </section>
+    <!-- End About Section -->
+
+
+
+
+  
+  
+  <!-- ======= Team Section ======= -->
+  <section id="team" class="team">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Team</span>
+        <h2>Team</h2>
+        <p>STOP TURTLENECK 프로젝트에 참여한 BE 전공자들입니다</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+          <div class="member">
+            <img src="{% static 'single_pages/assets/img/team/b.jpg'%}" alt="">
+            <h4>KIM JINYOUNG</h4>
+            <span>RESERCHIST</span>
+            <p>
+              거북목 판단을 위한 AI 모델 알고리즘 연구 
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+          <div class="member">
+            <img src="{% static 'single_pages/assets/img/team/a.jpg'%}" alt="">
+            <h4>KWON YOUNGWOO</h4>
+            <span>Product Manager</span>
+            <p>
+              STOP TUETLENECK 웹페이지 개발
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a> 
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+          <div class="member">
+            <img src="{% static 'single_pages/assets/img/team/c.jpg'%}" alt="">
+            <h4>CHOI WOOBIN</h4>
+            <span>Data analyst</span>
+            <p>
+              데이터 수집 및 분석
+            </p>
+            <div class="social">
+              <a href=""><i class="bi bi-twitter"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Team Section -->
+
+ <!-- ======= Cta Section ======= -->
+ <section id="cta" class="cta">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="text-center">
+      <h3>UP TO PAGE</h3>
+      <p> 거북목 상태를 다시 측정하고 싶으신가요?</p>
+      <a class="cta-btn" href="#">처음으로 돌아가기</a>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+     <!-- ======= Services Section ======= -->
+     <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Community</span>
+          <h2>Community</h2>
+          <p>거북목 증상에 대해 다양한 의견을 나눠보세요</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="/blog/">거북목 치료 방법</a></h4>
+              <p>조금 더 전문적인 거북목 치료 방법에 대해 <br> 알아보세요</p>
+            </div>
+          </div>
+ 
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="/blog/">거북목 치료 후기</a></h4>
+              <p></a>다른 사람들이 이용한 거북목 치료 방법에 <br>
+                대해 알아보세요</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="/blog/">거북목 의료기기</a></h4>
+              <p>BE 전공자들이 제공하는 거북목 의료기기에 대해 알아보세요</p>
+            </div>
+          </div>
+
+       
+
+      
+
+   
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+     <!-- ======= Portfolio Section ======= -->
+     <section id="portfolio" class="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Notice</span>
+          <h2>Notice</h2>
+          <p>BE 전공자들의 최근 소식을 만나보세요</p>
+        </div>
+
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card"style="float: right;">
+            <a href="/notice/">
+            <img src="{% static 'single_pages/assets/img/portfolio/portfolio-4.jpg' %}" class="img-fluid" alt="" >
+            </a>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card " style="float: right;">
+            <a href="/notice/">
+            <img src="{% static 'single_pages/assets/img/portfolio/notice.png' %}" class="img-fluid" alt="">
+          </a>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card"style="float: right;">
+            <a href="/notice/">
+            <img src="{% static 'single_pages/assets/img/portfolio/ai.jpg' %}" class="img-fluid" alt="">
+          </a>
+          </div>
+
+      
+   
+
+        </div>
+
+  
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Contact</span>
+        <h2>Contact</h2>
+        <p>BE 전문가들에게 연락하세요. 당신에게 도움을 줄 것입니다.</p>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bx bx-map"></i>
+            <h3>Our Address</h3>
+            <p>서울 중구 다동88</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-envelope"></i>
+            <h3>Email Us</h3>
+            <p>TURTLENECK@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="info-box  mb-4">
+            <i class="bx bx-phone-call"></i>
+            <h3>Call Us</h3>
+            <p>+1 1234 5678</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" data-aos="fade-up">
+
+        <div class="col-lg-6 ">
+          <div id="map" style="border:0; width: 100%; height: 384px;" allowfullscreen>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=16fa6962d25a035624e2ea5cc720f790&libraries=services"></script>
+        <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.56778286685991, 126.98229676426686), // 지도의 중심좌표
+                draggable: false,
+                level: 4 // 지도의 확대 레벨
+            };  
+        
+        // 지도를 생성합니다    
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+        
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
+        
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch('서울시 중구 다동88', function(result, status) {
+        
+            // 정상적으로 검색이 완료됐으면 
+             if (status === kakao.maps.services.Status.OK) {
+        
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                var marker = new kakao.maps.Marker({
+                    map: map,
+                    position: coords
+                });
+        
+                // 인포윈도우로 장소에 대한 설명을 표시합니다
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: '<div style="width:250px; height:60px; border: 1px solid black; text-align:center;padding:6px 6px 0 6px;"><div style="padding: 0 0 5px 0;"><strong>비 전공자들 (09:00~18:00)</strong></div><div>서울시 중구 다동 88 동아빌딩</div></div>'
+                });
+                infowindow.open(map, marker);
+        
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(coords);
+            } 
+        });    
+        </script>
+        </div>  
+        </div>
+
+        <div class="col-lg-6">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+ {% include 'blog/footer.html' %} 
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+
+
+
+
+<!-- Vendor JS Files -->
+<script src="{% static 'single_pages/assets/vendor/aos/aos.js'%}"></script>
+<script src="{% static 'single_pages/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{% static 'single_pages/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+<script src="{% static 'single_pages/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+<script src="{% static 'single_pages/assets/vendor/php-email-form/validate.js'%}"></script>
+<script src="{% static 'single_pages/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'single_pages/assets/js/main.js'%}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{% if request.session.loginuser %}
+<script>
+    let timer, flag;
+    const st_audio = new Audio('https://raw.githubusercontent.com/Real-Bird/pb/master/start.mp3');
+    // Load the image model and setup the webcam
+    async function init() { 
+    const model = await tf.loadLayersModel('https://raw.githubusercontent.com/Real-Bird/pb/master/json/model.json');
+    const co_audio = new Audio('https://raw.githubusercontent.com/Real-Bird/pb/master/good_pose.mp3');
+    const fo_audio = new Audio('https://raw.githubusercontent.com/Real-Bird/pb/master/bad_pose.mp3');
+    let faceModel, localStream;;
+
+        let w = 640, h = 480;
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        let constraints = {audio: false, video: true};
+        let video = document.getElementById("videoInput");
+        let guideLine = document.getElementById("guideLine");
+        video.width = w;
+        video.height = h;
+        function successCallback(stream){
+              video.srcObject = stream;
+              localStream = stream.getTracks()[0];
+              video.play();
+        }
+        function errorCallback(error){
+               console.log(error);
+        }
+        navigator.getUserMedia(constraints, successCallback, errorCallback);
+        let canvas = document.getElementById("videoOutput");
+        canvas.width = w;
+        canvas.height = h;
+        let label_container = document.getElementById("label-container")
+        let counter = document.getElementById("counter")
+        let scroll = document.getElementById("scroll")
+        let stopbtn = document.getElementById("stop")
+        // let restrbtn = document.getElementById("restart")
+        label_container.style.display = "inline"
+        counter.style.display = "inline"
+        stopbtn.style.display = "inline"
+        // restrbtn.style.display = "inline"
+        scroll.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        ctx = canvas.getContext("2d");
+        function processImage(){
+            ctx.drawImage(video, 0, 0, w, h);
+            ctx.drawImage(guideLine, 130, 120, 420, 360);
+
+            setTimeout(processImage, 1);
+            
+        }
+        processImage();
+        st_audio.play();
+        
+        function stream(){
+          // if(flag == true){
+            setInterval(sendImage, 1000);
+          // }
+        }
+        function stop_stream(){
+            location.reload();
+            // event.preventDefault(detectFaces);
+            // flag = false;
+            // video.pause();
+            // localStream.stop();
+            // canvas.style.display = "none";
+            // label_container.style.display = "none"
+            // counter.style.display = "none"
+
+        }
+        // function restr_stream(){
+        //   event.preventDefault(detectFaces);
+        //   flag = true;
+        //   navigator.getUserMedia(constraints, successCallback, errorCallback);
+        //   canvas.style.display = "block";
+        //   label_container.style.display = "inline"
+        //   counter.style.display = "inline"
+        // }
+        stopbtn.addEventListener("click", stop_stream)
+        // restrbtn.addEventListener("click", restr_stream)
+        async function detectFaces(){
+            
+            const prediction = await faceModel.estimateFaces(video, false);
+            // if (flag == true){
+              if (prediction.length == 1){
+                tpredict();
+                clearInterval(timer)
+              } else if (prediction.length == 0){
+                  console.log('no face')
+              }
+
+            // } 
+        }
+        
+        let count = 0;
+        async function tpredict(){
+            
+            const webcam = await tf.data.webcam(video, {
+            resizeWidth: 224,
+            resizeHeight: 224,
+            }); 
+            
+            let image = tf.browser.fromPixels(video)
+            image = tf.image.resizeBilinear(image, [224,224])
+            image = tf.expandDims(image, 0)
+            const out = model.predict(image)
+            const predictionArray = out.dataSync()
+            const maxValue = predictionArray.valueOf(Math.max(...predictionArray))
+            
+            let point = document.querySelector('sapn[name="point"]')
+        
+            if (maxValue[0] == 0){
+                document.getElementById("label-container").innerHTML = "<strong><b>corr</b></strong>";
+                console.log(maxValue[0])
+                co_audio.play();
+                $.ajax({
+                    url: '/corr_point/',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'userpoint': point},
+                    success: function(data){
+                        let point = JSON.stringify(data['userpoint'])
+                        document.getElementById("userpoint").innerText = point;
+                        console.log('point', point)
+                    },error: function (request, status, error) {
+                    console.log('i am failed');
+                    }
+                    });
+            } else if (maxValue[0] == 1){
+                count++;
+                document.getElementById("label-container").innerHTML = "<strong><b>forw</b></strong>";
+                document.getElementById("counter").innerHTML = "<strong>거북목 <b>" + count + "</b> 회</strong>";
+                console.log(maxValue[0])
+                fo_audio.play();
+                $.ajax({
+                    url: '/forw_point/',
+                    type: "POST",
+                    dataType: "json",
+                    data: {'userpoint': point},
+                    success: function(data){
+                        let point = JSON.stringify(data['userpoint'])
+                        document.getElementById("userpoint").innerText = point;
+                        console.log('point', point)
+                    },error: function (request, status, error) {
+                    console.log('i am failed');
+                    }
+                    });
+            }
+            
+
+        } 
+        let delay = 10000;
+        // call detect faces every 100 milliseconds or 10 times every second
+    video.addEventListener("loadeddata", async () => {
+        faceModel = await blazeface.load();
+        timer = setInterval(detectFaces, delay);
+        
+    });
+    
+}
+</script>
+{% else %}
+<script>
+    function init(){
+        alert("로그인이 필요합니다.")
+    }
+</script>
+{% endif %}
+</html>
+

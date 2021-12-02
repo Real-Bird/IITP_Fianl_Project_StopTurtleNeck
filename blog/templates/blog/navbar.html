@@ -1,0 +1,159 @@
+{% load socialaccount %}
+
+{% load static %}
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>STOP TURTLENECK</title>
+    <link rel="stylesheet" href="{% static 'single_pages/bootstrap/bootstrap.min.css' %}" media="screen">
+    
+    
+  
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'single_pages/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+    
+    <link href="{% static 'single_pages/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+    <link href="{% static 'single_pages/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+  
+    <!-- Template Main CSS File -->
+    <link href="{% static 'single_pages/assets/css/style.css'%}" rel="stylesheet">
+    <style>
+      .modal-backdrop {
+          z-index: -1;
+      }
+    </style>
+  </head>
+
+ <!-- ======= Top Bar ======= -->
+ <section id="topbar" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-center justify-content-md-between">
+    <div class="contact-info d-flex align-items-center">
+     
+    </div>
+    <div class="social-links d-none d-md-block">
+      <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+    </div>
+  </div>
+</section>
+
+
+<header id="header" class="navbar d-flex align-items-center">
+  <div class="container">
+  <h1 class="logo" ><a href="/" style="font-size: 28px;">BE 전공자들</a></h1>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"></button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown"></div>
+    <nav id="navbar" class="navbar">
+      <ul class="navbar-navs">
+        <li class="nav-item"><a class="nav-link scrollto active" href="#hero" >Home</a></li>
+        <li class="nav-item"><a class="nav-link scrollto" href="#about">service</a></li>
+        <li class="nav-item"><a class="nav-link scrollto" href="#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link scrollto" href="#services">community</a></li>
+        <li class="nav-item"><a class="nav-link scrollto " href="#portfolio">notice</a></li>
+        <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact</a></li>
+      </ul>
+
+
+
+      <ul class="navbar-navs ml-auto">
+        {% if request.session.loginuser %} 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <!-- user img-->
+          <!-- {% if user.socialaccount_set.all.0.get_avatar_url%}
+            <img class="rounded-circle" width="25px" src="{{user.socialaccount_set.all.0.get_avatar_url}}" alt="..">
+          {% else%}
+            <img class="rounded-circle" width="25px"  src="https://doitdjango.com/avatar/id/286/433f4a480e5e0199/svg/{{user.email}}">
+          {% endif %} -->
+          &nbsp;
+          
+          {{request.session.loginuser}}
+          
+        </a>
+   
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background-color: rgb(66, 64, 68);">
+          
+          <a class="dropdown-item" href="/mypage/">My page</a>
+          <a class="dropdown-item" href="/logout/">Log Out</a>
+
+        </div>
+        
+        </li>
+        
+        {% else %}
+
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+        </li>
+        {% endif %}
+        
+    </ul>
+    {% if request.session.loginuser %}
+    <span class="nav-item" id="userpoint" name="point"></span><span class="nav-item">&nbsp;점</span>
+    {% endif %}
+    </div>
+    </div>
+</nav>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog modal-sm" >
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="loginModal"><i class="fas fa-sign-in-alt"></i>Log in</h5></i>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col=md-6" style="margin: 0 auto;">
+                        <!-- <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="{% provider_login_url 'google'%}"> <i class="fab fa-google"></i>&nbsp; Log in whith Google</a> -->
+                        <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/login/" style="background-color: rgb(66, 64, 68);"> <i class="far fa-envelope"></i>&nbsp; Log in with Email</a>
+                        <a role="button" class="btn btn-outline-dark btn-block btn-sm" href="/signup/" style="background-color: rgb(66, 64, 68);"> <i class="far fa-envelope"></i>&nbsp; Sign up with Email</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+      </div>
+
+</header>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+{% if request.session.loginuser %}
+<script>
+         $.ajax({
+             url: '/view_point/',
+             type: "POST",
+             dataType: "json",
+             data: {'userpoint': 'view_point'},
+             success: function(data){
+                 let view_point = JSON.stringify(data['userpoint'])
+                 document.getElementById("userpoint").innerText = view_point;
+             },error: function (request, status, error) {
+             console.log('i am failed');
+             }
+             });
+</script>
+{% endif %}
+</html>
+    

@@ -1,0 +1,118 @@
+{% extends 'mypage/base.html' %}
+
+    {% block main_area %}
+       <h1>My Page</h1>
+       <hr size="10" width="160px" align="left">
+       <table class="table table-bordered" style="text-align: center; font-size: x-large; " height="200">
+        <tbody>
+        
+          <tr>
+            <th scope="row" width="200" style="background-color: #f8f9fa;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>&nbsp;My Name</th>
+            <td id="username">{{user_name}} &nbsp; <button class="btn btn-lg btn-secondary fw-bold border-black bg-black" style="font-size: 15px;">modify</button></td>
+          </tr>
+          <tr>
+            <th scope="row" style="background-color: #f8f9fa;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+            </svg>&nbsp;My E-mail</th>
+            <td id="userid">{{user_mail}}</td>
+          </tr>
+          <tr>
+            <th scope="row" style="background-color: #f8f9fa;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-phone-vibrate-fill" viewBox="0 0 16 16">
+              <path d="M4 4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4zm5 7a1 1 0 1 0-2 0 1 1 0 0 0 2 0zM1.807 4.734a.5.5 0 1 0-.884-.468A7.967 7.967 0 0 0 0 8c0 1.347.334 2.618.923 3.734a.5.5 0 1 0 .884-.468A6.967 6.967 0 0 1 1 8c0-1.18.292-2.292.807-3.266zm13.27-.468a.5.5 0 0 0-.884.468C14.708 5.708 15 6.819 15 8c0 1.18-.292 2.292-.807 3.266a.5.5 0 0 0 .884.468A7.967 7.967 0 0 0 16 8a7.967 7.967 0 0 0-.923-3.734zM3.34 6.182a.5.5 0 1 0-.93-.364A5.986 5.986 0 0 0 2 8c0 .769.145 1.505.41 2.182a.5.5 0 1 0 .93-.364A4.986 4.986 0 0 1 3 8c0-.642.12-1.255.34-1.818zm10.25-.364a.5.5 0 0 0-.93.364c.22.563.34 1.176.34 1.818 0 .642-.12 1.255-.34 1.818a.5.5 0 0 0 .93.364C13.856 9.505 14 8.769 14 8c0-.769-.145-1.505-.41-2.182z"/>
+            </svg>&nbsp;My Phone</th>
+            <td id="phone">010 - 0000 - 0000 &nbsp; <button class="btn btn-lg btn-secondary fw-bold border-black bg-black" style="font-size: 15px;">modify</button></td>
+          </tr>
+          <tr>
+            <th scope="row" style="background-color: #f8f9fa;"<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
+              <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+              <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+            </svg>&nbsp;My Points</th>
+            <td id="mypoint">{{user_points}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+        <!-- mypage mypost-->
+        <hr>
+        <h1>My Post</h1>
+        <hr size="10" width="150px" align="left">
+        {% if my_post.exists %}
+        {% for p in my_post %}
+        <!-- {{ p.author}} {{ user.username}} -->
+      
+        <div class="card mb-4" id="mypost-{{p.pk}}">
+            {% if p.head_image %}
+
+        
+            <a href="{{p.get_absolute_url}}"><img class="card-img-top" src="{{p.head_image.url}}" alt="{{p}} head image" /></a>
+            {% endif%}
+            <div class="card-body">
+                {% if p.category %}
+                <span class="badge badge-secondary folat-right">{{p.category}}</span>
+                {% else %}
+                <span class="badge badge-secondary folat-right">기타</span>
+                {% endif %}
+                <div class="small text-muted">&nbsp;</div>
+                <h2 class="card-title h4" >{{p.title}}</h2>
+                {% if p.hook_text %}
+                <h5 class="text_muted">{{p.hook_text}}</h5>
+                {%endif%}
+                <p class="card-text">{{p.get_content_markdown | truncatewords_html:20 | safe}}</p>
+
+                
+                <!--tag-->
+                {% if p.tags.exists %}
+                <i class="fas fa-tags"></i>
+                    {% for tag in p.tags.iterator %}
+                    <a href="{{tag.get_absolute_url}}"><span class="badge badge-pill badge-light">{{tag}}</span></a>
+                    {% endfor %}
+                <br/>
+                <br/>
+                {% endif %}
+
+                <a class="btn btn-primary" href="{{p.get_absolute_url}}">Read more →</a>
+            </div>
+            <div class="card-footer text-muted">
+                Postd on {{p.created_at}} by
+                <a href="#"> {{p.author | upper}}</a>
+            </div>
+        </div>
+        
+        {% endfor %}
+        {% else %} 
+        <h3>아직 게시물이 없습니다</h3>
+        {% endif %}
+      
+       
+
+    
+
+        <!-- Pagination-->
+        {% if is_paginated %}
+<nav aria-label="Pagination">
+    <hr class="my-0" />
+    <ul class="pagination justify-content-center my-4">
+        {% if page_obj.has_previous%}
+        <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}" >Newer</a></li>
+        {% else%}
+        <li class="page-item disabled"><a class="page-link" href="#" >Newer</a></li>
+        {% endif %}
+        <!-- <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+        <li class="page-item"><a class="page-link" href="#!">2</a></li>
+        <li class="page-item"><a class="page-link" href="#!">3</a></li>
+        <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+        <li class="page-item"><a class="page-link" href="#!">15</a></li> -->
+        {% if page_obj.has_next%}
+        <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Older</a></li>
+        {%else%}
+        <li class="page-item disabled"><a class="page-link" href="#" >Older</a></li>
+        {% endif%}
+    </ul>
+    {%endif%}
+ 
+</nav>
+<hr>
+{% endblock %}
